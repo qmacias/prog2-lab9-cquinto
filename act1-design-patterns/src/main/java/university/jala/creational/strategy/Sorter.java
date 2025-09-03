@@ -1,7 +1,7 @@
 package university.jala.creational.strategy;
 
 /**
- * @author Cristian Qunito
+ * @author Cristian Quinto
  */
 public final class Sorter {
     private SortingStrategy strategy;

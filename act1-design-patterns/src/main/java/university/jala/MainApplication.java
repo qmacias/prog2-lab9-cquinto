@@ -1,15 +1,13 @@
 package university.jala;
 
 import university.jala.creational.strategy.Sorter;
-import university.jala.creational.strategy.InsertionSortStrategy;
-import university.jala.creational.strategy.SelectionSortStrategy;
+import university.jala.creational.strategy.QuickSortStrategy;
+import university.jala.creational.strategy.BubbleSortStrategy;
 
 import university.jala.utils.Utils;
 
-import java.util.Arrays;
-
 /**
- * @author Cristian Qunito
+ * @author Cristian Quinto
  */
 public class MainApplication {
     public static void main(String[] args) {
@@ -29,52 +27,25 @@ public class MainApplication {
             switch (option) {
                 case 1: {
                     do {
-                        System.out.println("1. Try insertion sort algorithm");
-                        System.out.println("2. Change to selection sort algorithm");
+                        System.out.println("1. Try Bubble Sort algorithm");
+                        System.out.println("2. Change to Quick Sort algorithm");
 
                         System.out.print("Enter a sub-menu option (return with 0): ");
                         subMenuOption = Utils.readInteger();
 
-                        int[] array;
-                        int arraySize;
+                        int[] array = new int[] {3, 1, 4, 2};
 
-                        Sorter sorter = new Sorter(new InsertionSortStrategy());
+                        Sorter sorter = new Sorter(new BubbleSortStrategy());
 
                         switch (subMenuOption) {
                             case 1: {
-                                System.out.print("Enter integer array size: ");
-                                arraySize = Utils.readInteger();
-
-                                array = new int[arraySize];
-
-                                for (int i = 0; i < arraySize; i++) {
-                                    System.out.printf("Enter integer array element %d: ", i + 1);
-                                    array[i] = Utils.readInteger();
-                                }
-
                                 sorter.sort(array);
-
-                                System.out.println("Result:");
-                                System.out.println(Arrays.toString(array));
                             }
                             break;
                             case 2: {
-                                sorter.setStrategy(new SelectionSortStrategy());
-
-                                System.out.print("Enter integer array size: ");
-                                arraySize = Utils.readInteger();
-
-                                array = new int[arraySize];
-
-                                for (int i = 0; i < arraySize; i++) {
-                                    System.out.printf("Enter integer array element %d: ", i + 1);
-                                    array[i] = Utils.readInteger();
-                                }
+                                sorter.setStrategy(new QuickSortStrategy());
 
                                 sorter.sort(array);
-
-                                System.out.println("Result:");
-                                System.out.println(Arrays.toString(array));
                             }
                             break;
                             case 0: {
