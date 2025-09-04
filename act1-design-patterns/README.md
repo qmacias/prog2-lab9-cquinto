@@ -9,7 +9,7 @@ mvn clean install
 
 # Design Patterns
 
-## Strategy Pattern
+## Strategy
    
 This pattern is used when we have multiple algorithms for a specific task, and the client decides the actual implementation be used at runtime. A strategy pattern is also known as a _policy_ pattern. We define multiple algorithms and let client applications pass the algorithm to be used as a parameter.
 
@@ -51,7 +51,7 @@ classDiagram
 
 ![Mermaid Diagram](./mermaid-diagram-strategy-dp.png)
 
-### Singleton Pattern
+### Singleton
 
 The singleton pattern restricts the instantiation of a class and ensures that only one instance of the class exists in the Java Virtual Machine. The implementation of the singleton pattern has always been a controversial topic among developers.
 
@@ -105,12 +105,62 @@ classDiagram
     }
 ```
 
-![Mermaid Diagram](./mermaid-diagram-singleton.png)
+![Mermaid Diagram](./mermaid-diagram-singleton-dp.png)
+
+### Mediator
+
+The mediator design pattern is used to provide a centralized communication medium between different objects in a system. If the objects interact with each other directly, the system components are tightly-coupled with each other which makes maintainability cost higher and not flexible to extend easily. The mediator pattern focuses on providing a mediator between objects for communication and implementing loose-coupling between objects. The mediator works as a router between objects, and it can have its own logic to provide a way of communication.
+
+### Workflow
+
+#### Class Diagram
+
+```
+---
+title: Mediator DP example
+---
+classDiagram
+  direction LR
+
+  class AirTrafficControlTower {
+    <<interface>>
+    +requestTakeoff(Airplane airplane)
+    +requestLanding(Airplane airplane)
+  }
+
+  class AirportControlTower {
+    +requestTakeoff(Airplane airplane)
+    +requestLanding(Airplane airplane)
+  }
+  
+  class Airplane {
+    <<interface>>
+    +requestTakeoff()
+    +requestLanding()
+    +notifyAirTrafficControl(String message)
+  }
+
+  class CommercialAirplane {
+    -mediator : AirTrafficControlTower
+    +CommercialAirplane(mediator)
+    +requestTakeoff()
+    +requestLanding()
+    +notifyAirTrafficControl(String message)
+  }
+
+  AirTrafficControlTower <|.. AirportControlTower : implements
+  Airplane <|.. CommercialAirplane : implements
+  CommercialAirplane --> AirTrafficControlTower : uses
+```
+
+![Mermaid Diagram](./mermaid-diagram-mediator-dp.png)
 
 ### Bibliographic References
 
-Kumar, P. (2022, August 3rd). _Most Common Design Patterns in Java (With Examples)_. Digitalocean.com. https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial
+_Most Common Design Patterns in Java (With Examples)_. (S/f). Digitalocean.com. Retrieved on 3 September 2025 from https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial
 
-Coding Shuttle. (2024, December 12th). _10 Essential Java Design Patterns Every Developer Should Master (With Code Examples)_. Codingshuttle.com. https://www.codingshuttle.com/blogs/top-8-design-patterns-in-java/
+_10 Essential Java Design Patterns Every Developer Should Master (With Code Examples)_. (S/f). Codingshuttle.com. Retrieved on 3 September 2025 from https://www.codingshuttle.com/blogs/top-8-design-patterns-in-java/
 
-Visual Computer Science. (S/f). _Top 3 Creational Design Patterns You Should Know!_. Youtube.com. Retrieved on el 4 September 2025 from https://www.youtube.com/watch?v=G4TjjzQT8gw&t=304s
+_Top 3 Creational Design Patterns You Should Know!_. (S/f). Youtube.com. Retrieved on 3 September 2025 from https://www.youtube.com/watch?v=G4TjjzQT8gw&t=304s
+
+_Mediator Design Pattern_. (S/f). GeeksforGeeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/system-design/mediator-design-pattern/

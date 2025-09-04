@@ -1,5 +1,9 @@
 package university.jala;
 
+import university.jala.behavioural.mediator.AirTrafficControlTower;
+import university.jala.behavioural.mediator.Airplane;
+import university.jala.behavioural.mediator.AirportControlTower;
+import university.jala.behavioural.mediator.CommercialAirplane;
 import university.jala.creational.singleton.DatabaseConnection;
 
 import university.jala.creational.strategy.Sorter;
@@ -19,7 +23,7 @@ public class MainApplication {
         do {
             System.out.println("1. Strategy DP");
             System.out.println("2. Singleton DP");
-            System.out.println("3. Option 3");
+            System.out.println("3. Mediator DP");
             System.out.println("4. Option 4");
             System.out.println("5. Option 5");
 
@@ -70,7 +74,13 @@ public class MainApplication {
                 }
                 break;
                 case 3: {
-                    System.out.println("(3) Not implemented yet.");
+                    AirTrafficControlTower controlTower = new AirportControlTower();
+
+                    Airplane airplane1 = new CommercialAirplane(controlTower);
+                    Airplane airplane2 = new CommercialAirplane(controlTower);
+
+                    airplane1.requestTakeoff();
+                    airplane2.requestLanding();
                 }
                 break;
                 case 4: {
