@@ -305,6 +305,64 @@ classDiagram
 
 ![Mermaid Diagram](./mermaid-diagram-facade-dp.png)
 
+### Observer (plus, Tutoring Sessions)
+
+An observer design pattern is useful when you are interested in the state of an Object and want to get notified whenever there is any change. In the observer pattern, the Object that watches the state of another Object is called observer, and the Object that is being watched is called subject.
+
+### Workflow
+
+#### Class Diagram
+
+```
+---
+title: Observer DP example
+---
+classDiagram
+  class EventBus {
+    <<interface>>
+    +publish(Notification notification)
+    +addSubscriber(EventSubscriber subscriber)
+  }
+
+  class InMemoryEventBus {
+    -subscribers : List~EventSubscriber~
+    +InMemoryEventBus(subscribers)
+    +publish(Notification notification)
+    +addSubscriber(EventSubscriber subscriber)
+  }
+
+  class EventSubscriber {
+    <<interface>>
+    +on(Notification notification)
+  }
+
+  class SlackNotificationService {
+    +on(Notification notification)
+  }
+
+  class TwitterNotificationService {
+    +on(Notification notification)
+  }
+
+  class Notification {
+    -message : String
+    +Notification(message)
+    +getMessage() String
+  }
+
+  EventBus <|.. InMemoryEventBus : implements
+  EventSubscriber <|.. SlackNotificationService : implements
+  EventSubscriber <|.. TwitterNotificationService : implements
+
+  InMemoryEventBus *-- EventSubscriber
+  InMemoryEventBus --> Notification : uses
+  EventSubscriber --> Notification : uses
+  SlackNotificationService --> Notification : uses
+  SlackNotificationService --> Notification : uses
+```
+
+![Mermaid Diagram](./mermaid-diagram-observer-dp.png)
+
 ### Bibliographic References
 
 _Most Common Design Patterns in Java (With Examples)_. (S/f). Digital Ocean. Retrieved on 3 September 2025 from https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial

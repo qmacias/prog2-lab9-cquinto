@@ -5,6 +5,7 @@ import university.jala.behavioural.mediator.Airplane;
 import university.jala.behavioural.mediator.AirportControlTower;
 import university.jala.behavioural.mediator.CommercialAirplane;
 
+import university.jala.behavioural.observer.plus.*;
 import university.jala.creational.factory.method.Device;
 import university.jala.creational.factory.method.DeviceFactory;
 import university.jala.creational.singleton.DatabaseConnection;
@@ -23,6 +24,8 @@ import university.jala.structural.facade.NonVegMenu;
 import university.jala.structural.facade.VegMenu;
 
 import university.jala.utils.Utils;
+
+import java.util.ArrayList;
 
 /**
  * @author Cristian Quinto
@@ -43,6 +46,7 @@ public class MainApplication {
             System.out.println("4. Adapter DP");
             System.out.println("5. Factory DP");
             System.out.println("6. Facade DP");
+            System.out.println("7. Observer DP (plus, Tutoring Sessions)");
 
             System.out.print("Enter a menu option (exit with 0): ");
             option = Utils.readInteger();
@@ -124,6 +128,17 @@ public class MainApplication {
 
                     keeperVegMenu.show();
                     keeperNonVegMenu.show();
+                }
+                break;
+                case 7: {
+                    EventBus eventBus = new InMemoryEventBus(new ArrayList<>());
+
+                    eventBus.addSubscriber(new SlackNotificationService());
+                    eventBus.addSubscriber(new TwitterNotificationService());
+
+                    Notification notification = new Notification("This is an example notification.");
+
+                    eventBus.publish(notification);
                 }
                 break;
                 case 0: {
