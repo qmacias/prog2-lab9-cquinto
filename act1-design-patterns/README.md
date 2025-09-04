@@ -155,12 +155,50 @@ classDiagram
 
 ![Mermaid Diagram](./mermaid-diagram-mediator-dp.png)
 
+### Adapter
+
+The adapter design pattern is one of the structural design patterns and is used so that two unrelated interfaces can work together. The object that joins these unrelated interfaces is called an adapter.
+
+### Workflow
+
+#### Class Diagram
+
+```
+---
+title: Adapter DP example
+---
+classDiagram
+  direction LR
+
+  class Printer {
+    <<interface>>
+    +print()
+  }
+
+  class LegacyPrinter {
+    +printDocument()
+  }
+
+  class PrinterAdapter {
+    -legacyPrinter : LegacyPrinter
+    +PrinterAdapter(legacyPrinter)
+    +print()
+  }
+
+  Printer <|.. PrinterAdapter : implements
+  PrinterAdapter --> LegacyPrinter : uses
+```
+
+![Mermaid Diagram](./mermaid-diagram-adapter-dp.png)
+
 ### Bibliographic References
 
-_Most Common Design Patterns in Java (With Examples)_. (S/f). Digitalocean.com. Retrieved on 3 September 2025 from https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial
+_Most Common Design Patterns in Java (With Examples)_. (S/f). Digital Ocean. Retrieved on 3 September 2025 from https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial
 
-_10 Essential Java Design Patterns Every Developer Should Master (With Code Examples)_. (S/f). Codingshuttle.com. Retrieved on 3 September 2025 from https://www.codingshuttle.com/blogs/top-8-design-patterns-in-java/
+_10 Essential Java Design Patterns Every Developer Should Master (With Code Examples)_. (S/f). Coding Shuttle. Retrieved on 3 September 2025 from https://www.codingshuttle.com/blogs/top-8-design-patterns-in-java/
 
-_Top 3 Creational Design Patterns You Should Know!_. (S/f). Youtube.com. Retrieved on 3 September 2025 from https://www.youtube.com/watch?v=G4TjjzQT8gw&t=304s
+_Top 3 Creational Design Patterns You Should Know!_. (S/f). YouTube. Retrieved on 3 September 2025 from https://www.youtube.com/watch?v=G4TjjzQT8gw&t=304s
 
-_Mediator Design Pattern_. (S/f). GeeksforGeeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/system-design/mediator-design-pattern/
+_Mediator Design Pattern_. (S/f). Geeks for Geeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/system-design/mediator-design-pattern/
+
+_Adapter Design Pattern in Java_. (S/f). Geeks for Geeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/system-design/adapter-design-pattern-in-java/

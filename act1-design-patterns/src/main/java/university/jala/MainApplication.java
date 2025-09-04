@@ -4,11 +4,16 @@ import university.jala.behavioural.mediator.AirTrafficControlTower;
 import university.jala.behavioural.mediator.Airplane;
 import university.jala.behavioural.mediator.AirportControlTower;
 import university.jala.behavioural.mediator.CommercialAirplane;
+
 import university.jala.creational.singleton.DatabaseConnection;
 
 import university.jala.creational.strategy.Sorter;
 import university.jala.creational.strategy.QuickSortStrategy;
 import university.jala.creational.strategy.BubbleSortStrategy;
+
+import university.jala.structural.adapter.LegacyPrinter;
+import university.jala.structural.adapter.Printer;
+import university.jala.structural.adapter.PrinterAdapter;
 
 import university.jala.utils.Utils;
 
@@ -16,6 +21,10 @@ import university.jala.utils.Utils;
  * @author Cristian Quinto
  */
 public class MainApplication {
+    public static void clientCode(Printer printer) {
+        printer.print();
+    }
+
     public static void main(String[] args) {
         int option;
         int subMenuOption;
@@ -24,8 +33,9 @@ public class MainApplication {
             System.out.println("1. Strategy DP");
             System.out.println("2. Singleton DP");
             System.out.println("3. Mediator DP");
-            System.out.println("4. Option 4");
+            System.out.println("4. Adapter DP");
             System.out.println("5. Option 5");
+            System.out.println("6. Option 6");
 
             System.out.print("Enter a menu option (exit with 0): ");
             option = Utils.readInteger();
@@ -84,11 +94,17 @@ public class MainApplication {
                 }
                 break;
                 case 4: {
-                    System.out.println("(4) Not implemented yet.");
+                    PrinterAdapter adapter = new PrinterAdapter(new LegacyPrinter());
+
+                    clientCode(adapter);
                 }
                 break;
                 case 5: {
                     System.out.println("(5) Not implemented yet.");
+                }
+                break;
+                case 6: {
+                    System.out.println("(6) Not implemented yet.");
                 }
                 break;
                 case 0: {
