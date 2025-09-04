@@ -1,4 +1,4 @@
-package university.jala.creational.strategy;
+package university.jala.behavioural.strategy;
 
 /**
  * @author Cristian Quinto

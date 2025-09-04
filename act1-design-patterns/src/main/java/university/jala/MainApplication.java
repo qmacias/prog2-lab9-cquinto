@@ -1,18 +1,19 @@
 package university.jala;
 
+import university.jala.creational.factory.method.Device;
+import university.jala.creational.factory.method.DeviceFactory;
+import university.jala.creational.singleton.DatabaseConnection;
+
 import university.jala.behavioural.mediator.AirTrafficControlTower;
 import university.jala.behavioural.mediator.Airplane;
 import university.jala.behavioural.mediator.AirportControlTower;
 import university.jala.behavioural.mediator.CommercialAirplane;
 
 import university.jala.behavioural.observer.plus.*;
-import university.jala.creational.factory.method.Device;
-import university.jala.creational.factory.method.DeviceFactory;
-import university.jala.creational.singleton.DatabaseConnection;
 
-import university.jala.creational.strategy.Sorter;
-import university.jala.creational.strategy.QuickSortStrategy;
-import university.jala.creational.strategy.BubbleSortStrategy;
+import university.jala.behavioural.strategy.Sorter;
+import university.jala.behavioural.strategy.QuickSortStrategy;
+import university.jala.behavioural.strategy.BubbleSortStrategy;
 
 import university.jala.structural.adapter.LegacyPrinter;
 import university.jala.structural.adapter.Printer;

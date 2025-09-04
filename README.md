@@ -1,6 +1,6 @@
-# Prog_2_Lab_6_CQuinto
+# Prog_2_Lab_9_CQuinto
 
-Week 6 - Lab 6
+Week 9 - Lab 9
 
 Group A - Section C
 
