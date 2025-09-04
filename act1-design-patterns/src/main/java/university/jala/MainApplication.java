@@ -1,5 +1,7 @@
 package university.jala;
 
+import university.jala.creational.singleton.DatabaseConnection;
+
 import university.jala.creational.strategy.Sorter;
 import university.jala.creational.strategy.QuickSortStrategy;
 import university.jala.creational.strategy.BubbleSortStrategy;
@@ -16,7 +18,7 @@ public class MainApplication {
 
         do {
             System.out.println("1. Strategy DP");
-            System.out.println("2. Option 2");
+            System.out.println("2. Singleton DP");
             System.out.println("3. Option 3");
             System.out.println("4. Option 4");
             System.out.println("5. Option 5");
@@ -61,7 +63,10 @@ public class MainApplication {
                 }
                 break;
                 case 2: {
-                    System.out.println("(2) Not implemented yet.");
+                    DatabaseConnection db1 = DatabaseConnection.getInstance();
+                    DatabaseConnection db2 = DatabaseConnection.getInstance();
+
+                    assert db1 == db2;
                 }
                 break;
                 case 3: {
