@@ -5,6 +5,8 @@ import university.jala.behavioural.mediator.Airplane;
 import university.jala.behavioural.mediator.AirportControlTower;
 import university.jala.behavioural.mediator.CommercialAirplane;
 
+import university.jala.creational.factory.method.Device;
+import university.jala.creational.factory.method.DeviceFactory;
 import university.jala.creational.singleton.DatabaseConnection;
 
 import university.jala.creational.strategy.Sorter;
@@ -34,7 +36,7 @@ public class MainApplication {
             System.out.println("2. Singleton DP");
             System.out.println("3. Mediator DP");
             System.out.println("4. Adapter DP");
-            System.out.println("5. Option 5");
+            System.out.println("5. Factory DP");
             System.out.println("6. Option 6");
 
             System.out.print("Enter a menu option (exit with 0): ");
@@ -100,7 +102,13 @@ public class MainApplication {
                 }
                 break;
                 case 5: {
-                    System.out.println("(5) Not implemented yet.");
+                    DeviceFactory factory = new DeviceFactory();
+
+                    Device tablet = factory.createTablet();
+                    Device smartphone = factory.createSmartphone();
+
+                    tablet.display();
+                    smartphone.display();
                 }
                 break;
                 case 6: {

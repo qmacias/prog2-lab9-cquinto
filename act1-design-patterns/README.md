@@ -191,6 +191,54 @@ classDiagram
 
 ![Mermaid Diagram](./mermaid-diagram-adapter-dp.png)
 
+### Factory
+
+The factory design pattern is used when we have a superclass with multiple subclasses and based on input, we need to return one of the subclasses. This pattern takes out the responsibility of the instantiation of a Class from the client program to the factory class. We can apply a singleton pattern on the factory class or make the factory method static.
+
+### Workflow
+
+#### Class Diagram
+
+```
+---
+title: Factory DP example
+---
+classDiagram
+  direction LR
+
+  class Device {
+    <<interface>>
+    +display()
+  }
+
+  class Tablet {
+    +display()
+  }
+
+  class Smartphone {
+    +display()
+  }
+
+  class Factory {
+    <<interface>>
+    +createTablet() Device
+    +createSmartphone() Device
+  }
+
+  class DeviceFactory {
+    +createTablet() Device
+    +createSmartphone() Device
+  }
+
+  Device <|.. Tablet : implements
+  Device <|.. Smartphone : implements
+  Factory <|.. DeviceFactory : implements
+  DeviceFactory --> Tablet : uses
+  DeviceFactory --> Smartphone : uses
+```
+
+![Mermaid Diagram](./mermaid-diagram-factory-dp.png)
+
 ### Bibliographic References
 
 _Most Common Design Patterns in Java (With Examples)_. (S/f). Digital Ocean. Retrieved on 3 September 2025 from https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial
@@ -202,3 +250,5 @@ _Top 3 Creational Design Patterns You Should Know!_. (S/f). YouTube. Retrieved o
 _Mediator Design Pattern_. (S/f). Geeks for Geeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/system-design/mediator-design-pattern/
 
 _Adapter Design Pattern in Java_. (S/f). Geeks for Geeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/system-design/adapter-design-pattern-in-java/
+
+_Factory Method Design Pattern in Java_. (S/f). Geeks for Geeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/java/factory-method-design-pattern-in-java/
