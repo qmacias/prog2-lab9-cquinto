@@ -17,6 +17,11 @@ import university.jala.structural.adapter.LegacyPrinter;
 import university.jala.structural.adapter.Printer;
 import university.jala.structural.adapter.PrinterAdapter;
 
+import university.jala.structural.facade.HotelKeeper;
+import university.jala.structural.facade.CentralHotelKeeper;
+import university.jala.structural.facade.NonVegMenu;
+import university.jala.structural.facade.VegMenu;
+
 import university.jala.utils.Utils;
 
 /**
@@ -37,7 +42,7 @@ public class MainApplication {
             System.out.println("3. Mediator DP");
             System.out.println("4. Adapter DP");
             System.out.println("5. Factory DP");
-            System.out.println("6. Option 6");
+            System.out.println("6. Facade DP");
 
             System.out.print("Enter a menu option (exit with 0): ");
             option = Utils.readInteger();
@@ -112,7 +117,13 @@ public class MainApplication {
                 }
                 break;
                 case 6: {
-                    System.out.println("(6) Not implemented yet.");
+                    HotelKeeper keeper = new CentralHotelKeeper();
+
+                    VegMenu keeperVegMenu = keeper.getVegMenu();
+                    NonVegMenu keeperNonVegMenu = keeper.getNonVegMenu();
+
+                    keeperVegMenu.show();
+                    keeperNonVegMenu.show();
                 }
                 break;
                 case 0: {

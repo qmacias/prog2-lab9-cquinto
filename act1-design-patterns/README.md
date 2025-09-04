@@ -239,6 +239,72 @@ classDiagram
 
 ![Mermaid Diagram](./mermaid-diagram-factory-dp.png)
 
+### Facade
+
+The facade pattern is used to help client applications easily interact with the system. It provides a unified interface to a set of interfaces in a subsystem. Facade defines a high-level contract that makes the subsystem easier to use.
+
+### Workflow
+
+#### Class Diagram
+
+```
+---
+title: Facade DP example
+---
+classDiagram
+  direction LR
+
+  class HotelKeeper {
+    <<interface>>
+    +getVegMenu() VegMenu
+    +getNonVegMenu() NonVegMenu
+  }
+
+  class CentralHotelKeeper {
+    +getVegMenu() VegMenu
+    +getNonVegMenu() NonVegMenu
+  }
+
+  class Hotel {
+    <<interface>>
+    +getMenus() Menus
+  }
+
+  class VegRestaurant {
+    +getMenus() Menus
+  }
+
+  class NonVegRestaurant {
+    +getMenus() Menus
+  }
+
+  class Menus {
+    <<interface>>
+    +show()
+  }
+
+  class VegMenu {
+    +show()
+  }
+
+  class NonVegMenu {
+    +show()
+  }
+
+  HotelKeeper <|.. CentralHotelKeeper : implements
+  Hotel <|.. VegRestaurant : implements
+  Hotel <|.. NonVegRestaurant : implements
+  Menus <|.. VegMenu : implements
+  Menus <|.. NonVegMenu : implements
+
+  CentralHotelKeeper --> VegRestaurant : uses
+  CentralHotelKeeper --> NonVegRestaurant : uses
+  VegRestaurant --> VegMenu : uses
+  NonVegRestaurant --> NonVegMenu : uses
+```
+
+![Mermaid Diagram](./mermaid-diagram-facade-dp.png)
+
 ### Bibliographic References
 
 _Most Common Design Patterns in Java (With Examples)_. (S/f). Digital Ocean. Retrieved on 3 September 2025 from https://www.digitalocean.com/community/tutorials/java-design-patterns-example-tutorial
@@ -252,3 +318,5 @@ _Mediator Design Pattern_. (S/f). Geeks for Geeks. Retrieved on 4 September 2025
 _Adapter Design Pattern in Java_. (S/f). Geeks for Geeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/system-design/adapter-design-pattern-in-java/
 
 _Factory Method Design Pattern in Java_. (S/f). Geeks for Geeks. Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/java/factory-method-design-pattern-in-java/
+
+_Facade Method Design Pattern_. Geeks for Geeks. (S/f). Retrieved on 4 September 2025 from https://www.geeksforgeeks.org/system-design/facade-design-pattern-introduction/
